@@ -6,7 +6,14 @@ services:
     networks:
       - dev_overlay
     ports:
-      - "8080:8080"
+      - "8089:8080"
+    restart: always
+    healthcheck:
+      test: curl -f http://localhost:8080/success || exit 1
+      interval: 5s
+      timeout: 3s
+      retries: 3
+      start_period: 2m
     deploy:
       replicas: 2
       resources:
@@ -14,6 +21,9 @@ services:
           cpus: '2'
       restart_policy:
         condition: any
+        delay: 2m
+      update_config:
+        delay: 2m
     environment:
       charon.env: dev
       spring.cloud.inetutils.preferred-networks: 10.0.3
