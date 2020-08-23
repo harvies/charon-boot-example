@@ -8,12 +8,12 @@ services:
     ports:
       - "8089:8080"
     restart: always
-    healthcheck:
-      test: curl -f http://localhost:8080/success || exit 1
-      interval: 5s
-      timeout: 3s
-      retries: 3
-      start_period: 1m
+#    healthcheck:
+#      test: curl -f http://localhost:8080/success || exit 1
+#      interval: 5s
+#      timeout: 3s
+#      retries: 3
+#      start_period: 1m
     deploy:
       replicas: 2
       resources:
