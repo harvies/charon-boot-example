@@ -22,7 +22,7 @@ services:
         condition: on-failure
         delay: 5s
         max_attempts: 3
-        window: 120s
+        window: 10m
     environment:
       charon.env: dev
       SW_AGENT_COLLECTOR_BACKEND_SERVICES: sw.dev.kikera.org:11800
