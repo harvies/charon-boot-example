@@ -1,3 +1,5 @@
+## https://docs.docker.com/compose/compose-file/
+
 version: "3.7"
 
 services:
@@ -17,12 +19,18 @@ services:
       replicas: 2
       resources:
         limits:
-          cpus: '1'
+          cpus: '4'
+      ## 重启策略    
       restart_policy:
         condition: on-failure
         delay: 5s
         max_attempts: 3
         window: 10m
+      ## 更新service策略，先启动再停止
+      update_config:
+        parallelism: 1
+        delay: 5s
+        order: start-first
     environment:
       charon.env: dev
       SW_AGENT_COLLECTOR_BACKEND_SERVICES: sw.dev.kikera.org:11800
