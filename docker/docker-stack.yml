@@ -20,8 +20,7 @@ services:
           cpus: '2'
     environment:
       charon.env: dev
-      spring.cloud.inetutils.preferred-networks: 10.0.3
-      SW_AGENT_COLLECTOR_BACKEND_SERVICES: sw.dev.kikera.top:11800
+      SW_AGENT_COLLECTOR_BACKEND_SERVICES: sw.dev.kikera.org:11800
       SW_AGENT_NAME: dev-charon-boot-example
 networks:
   dev_overlay:
